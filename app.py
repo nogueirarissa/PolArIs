@@ -10,7 +10,7 @@ st.set_page_config(
     layout="centered",    
 )
 
-
+load_dotenv()
 polArIs_logo = "assets\polArIs_logo.png"
 
 
@@ -22,6 +22,7 @@ def translate_role_for_streamlit(user_role):
         return "assistant"
     else:
         return user_role
+
 
 # Initialize chat session in Streamlit if not already present
 if "chat_session" not in st.session_state:
