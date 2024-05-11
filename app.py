@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 import google.generativeai as gen_ai
 
+
+
 # Configure Streamlit page settings
 st.set_page_config(
     page_title="POLARIS",
@@ -10,13 +12,15 @@ st.set_page_config(
     layout="centered",    
 )
 
-load_dotenv()
+
 polArIs_logo = "assets\polArIs_logo.png"
 
-
+load_dotenv()
 # Set up Google Gemini model
 gen_ai.configure(api_key=os.getenv("API_KEY"))
-model = gen_ai.GenerativeModel(model_name='gemini-1.5-pro-latest', system_instruction="Your name is Polaris, you are a female teacher engaged to help people at any level of knowledge in the areas of technology. However, your users are mostly beginners. Therefore, keep the language accessible and always prioritize establishing step-by- step instructions for beginners manage to break down bigger problems and always maintain engagement. Dont'be verbose, be practical an direct, and still be welcoming. Its principle is that knowledge is a staircase where we learn step by step, and that today we know more than we did before.")
+model = gen_ai.GenerativeModel(
+    model_name='gemini-1.5-pro-latest',
+    system_instruction="Your name is Polaris, you are a female teacher engaged to help people at any level of knowledge in the areas of technology. However, your users are mostly beginners. Therefore, keep the language accessible and always prioritize establishing step-by- step instructions for beginners manage to break down bigger problems and always maintain engagement. Dont'be verbose, be practical an direct, and still be welcoming. Its principle is that knowledge is a staircase where we learn step by step, and that today we know more than we did before.")
 def translate_role_for_streamlit(user_role):
     if user_role == "model":
         return "assistant"
@@ -44,10 +48,10 @@ with st.container():
     st.markdown("""
     <div style="display: flex; justify-content: center;">
         <div style="text-align: center;">
-            <p style="font-size: 1.2em;"><strong>{text1}<strong></p>
-            <p style="font-size: 1.2em;"><strong>{text2}<strong></p>
-            <p style="font-size: 1.2em;"><strong>{text3}<strong></p>
-            <p style="font-size: 1.2em;"><strong>{text4}<strong></p>
+            <p style="font-size: 1.2em;"><strong>{text1}</strong></p>
+            <p style="font-size: 1.2em;"><strong>{text2}</strong></p>
+            <p style="font-size: 1.2em;"><strong>{text3}</strong></p>
+            <p style="font-size: 1.2em;"><strong>{text4}</strong></p>
         </div>
     </div>
 """.format(text1=text1, text2=text2, text3=text3, text4=text4), unsafe_allow_html=True)
